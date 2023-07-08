@@ -15,6 +15,7 @@ ssh-keygen -t ed25519 -C "slave-mysql"
 cat ~/.ssh/id_ed25519.pub
 exit
 mkdir confs
+cd ./confs
 git clone git@github.com:IVyacheslavA/Stend.git
 #static ip
 sed -i 's/IPADDR=192.168.1.201/IPADDR=192.168.1.202/' /root/confs/Stend/ifcfg-enp0s3
