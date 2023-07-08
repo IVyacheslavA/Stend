@@ -13,7 +13,7 @@ yum install wget -y 1>/dev/null & echo "wget ok"
 #gitkeys
 ssh-keygen -t ed25519 -C "slave-mysql"
 cat ~/.ssh/id_ed25519.pub
-
+read
 #static ip
 rm -f /etc/sysconfig/network-scripts/ifcfg-enp0s3
 cp -v /root/confs/Stend/ifcfg-enp0s3 /etc/sysconfig/network-scripts/ifcfg-enp0s3
