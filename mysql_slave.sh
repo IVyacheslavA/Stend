@@ -13,13 +13,16 @@ yum install wget -y 1>/dev/null & echo "wget ok"
 #gitkeys
 ssh-keygen -t ed25519 -C "slave-mysql"
 cat ~/.ssh/id_ed25519.pub
-read
+exit
+mkdir confs
+git clone git@github.com:IVyacheslavA/Stend.git
 #static ip
+sed -i 's/IPADDR=192.168.1.201/IPADDR=192.168.1.202/' /root/confs/Stend/ifcfg-enp0s3
 rm -f /etc/sysconfig/network-scripts/ifcfg-enp0s3
 cp -v /root/confs/Stend/ifcfg-enp0s3 /etc/sysconfig/network-scripts/ifcfg-enp0s3
 ifdown enp0s3; ifup enp0s3
 
-exit
+
 
 #mysql install
 rpm -Uvh https://repo.mysql.com/mysql80-community-release-el7-7.noarch.rpm
