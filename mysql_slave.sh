@@ -9,7 +9,7 @@ yum update -y 1>/dev/null
 yum install vim -y 1>/dev/null & echo "vim ok"
 yum install git -y 1>/dev/null & echo "git ok"
 yum install wget -y 1>/dev/null & echo "wget ok"
-
+exit
 #gitkeys
 ssh-keygen -t ed25519 -C "slave-mysql"
 cat ~/.ssh/id_ed25519.pub
@@ -27,7 +27,7 @@ ifdown enp0s3; ifup enp0s3
 #mysql install
 rpm -Uvh https://repo.mysql.com/mysql80-community-release-el7-7.noarch.rpm
 sed -i 's/enabled=1/enabled=0/' /etc/yum.repos.d/mysql-community.repo
-yum -y --enablerepo=mysql80-community install mysql-community-server
+yum -y --enablerepo=mysql80-community install mysql-community-server 1>/dev/null
 systemctl start mysqld
 systemctl enable mysqld
 systemctl status mysqld | head -n 3
@@ -36,4 +36,5 @@ systemctl disable firewalld
 
 grep "A temporary password" /var/log/mysqld.log 
 mysql -uroot -p
+exit
 ALTER USER 'root'@'localhost' IDENTIFIED WITH 'caching_sha2_password' BY 'Testpass1$';
