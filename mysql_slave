@@ -1,5 +1,5 @@
 #!/bin/bash
-mysql_config_editor set --login-path=backup  --host=localhost --user=backup --password=
+mysql_config_editor set --login-path=backup  --host=localhost --user=backup --password
 mysql --login-path=backup -e 'show databases;'
 cd /root/confs/Stend
 mv ./msql_backuper.timer /etc/systemd/system/msql_backuper.timer
