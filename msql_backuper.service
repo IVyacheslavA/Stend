@@ -4,7 +4,7 @@ After=mysql.service
 
 [Service]
 Type=oneshot
-ExecStart=/root/msqlbac.sh
+ExecStart=/root/confs/Stend/msqlbac.sh
 
 [Install]
 WantedBy=multi-user.target
