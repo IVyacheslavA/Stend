@@ -1,0 +1,11 @@
+#!/bin/bash
+mysql_config_editor set --login-path=backup  --host=localhost --user=backup --password=oTUSbackup#2023
+mysql --login-path=backup -e 'show databases;'
+cd /root/confs/Stend
+mv ./msql_backuper.timer /etc/systemd/system/msql_backuper.timer
+mv ./msql_backuper.service /etc/systemd/system/msql_backuper.service
+
+systemctl enable --now msql_backuper.timer
+systemctl status msql_backuper.timer | head -n 3
+systemctl  enable --now msql_backuper.service
+systemctl status msql_backuper.service | head -n 3

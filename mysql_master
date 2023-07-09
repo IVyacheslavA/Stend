@@ -1,0 +1,10 @@
+#!/bin/bash
+mysql_config_editor set --login-path=root  --host=localhost --user=root --password
+mysql --login-path=root -e 'create database wordpress default character set utf8 collate utf8_unicode_ci;'
+mysql --login-path=root -e 'create user 'wordpressuser'@'%' identified with 'caching_sha2_password' by 'oTUSWORDpress#2023';'
+mysql --login-path=root -e 'grant all on wordpress.* to 'wordpressuser'@'%';'
+mysql --login-path=root -e 'flush privileges;'
+mysql --login-path=root -e 'create user 'backup'@'%' identified with 'caching_sha2_password' by 'oTUSbackup#2023';'
+mysql --login-path=root -e 'grant select, lock tables, reload, process, trigger, super, replication client, show view on *.* to 'backup'@'%';'
+mysql --login-path=root -e 'flush privileges;'
+

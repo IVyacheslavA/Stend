@@ -1,0 +1,9 @@
+[Unit]
+Description=Runs msql_backuper.service
+
+[Timer]
+OnUnitActiveSec=1d
+Unit=msql_backuper.service
+
+[Install]
+Wantedby=multi-user.target

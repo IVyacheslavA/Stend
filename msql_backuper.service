@@ -1,0 +1,10 @@
+[Unit]
+Description=backuper for mysql
+After=mysql.service
+
+[Service]
+Type=oneshot
+ExecStart=/root/msqlbac.sh
+
+[Install]
+WantedBy=multi-user.target
